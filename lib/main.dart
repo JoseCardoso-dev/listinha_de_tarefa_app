@@ -15,26 +15,38 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Container(
-          color: Colors.white,
-          child: ListView(
-            children: [
-              Task("Testeeeeeeee"),
-              Task("task_title"),
-              Task("Testeeeeeeee"),
-              Task("task_title"),
-              Task("Testeeeeeeee"),
-              Task("task_title asdasdasd asdasdasd asdasdas"),
-            ],
-          ),
-        ));
+        home: Scaffold(
+            appBar: AppBar(
+              leading: Container(),
+              title: Text("Tarefas"),
+            ),
+            body: Container(
+              color: Colors.white,
+              child: ListView(
+                children: [
+                  Task("Aprender Flutter",
+                      "https://cdn.iconscout.com/icon/free/png-256/free-flutter-3629369-3032362.png"),
+                  Task("task_title",
+                      "https://storage.googleapis.com/cms-storage-bucket/780e0e64d323aad2cdd5.png"),
+                  Task("Testeeeeeeee",
+                      "https://logopng.com.br/logos/google-37.png"),
+                  Task("task_title",
+                      "https://logopng.com.br/logos/google-37.png"),
+                  Task("Testeeeeeeee",
+                      "https://logopng.com.br/logos/google-37.png"),
+                  Task("task_title asdasdasd",
+                      "https://logopng.com.br/logos/google-37.png"),
+                ],
+              ),
+            )));
   }
 }
 
 class Task extends StatefulWidget {
   final String task_title;
+  final String img;
 
-  const Task(this.task_title, {Key? key}) : super(key: key);
+  const Task(this.task_title, this.img, {Key? key}) : super(key: key);
 
   @override
   State<Task> createState() => _TaskState();
@@ -63,10 +75,13 @@ class _TaskState extends State<Task> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.black26,
-                        width: 72,
-                        height: 100,
-                      ),
+                          color: Colors.black26,
+                          width: 72,
+                          height: 100,
+                          child: Image.network(
+                            widget.img,
+                            fit: BoxFit.cover,
+                          )),
                       Container(
                         width: 140,
                         child: Text(
@@ -80,13 +95,30 @@ class _TaskState extends State<Task> {
                           ),
                         ),
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              nivel++;
-                            });
-                          },
-                          child: const Icon(Icons.arrow_drop_up))
+                      Container(
+                        width: 50,
+                        height: 50,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                nivel++;
+                              });
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Icon(Icons.arrow_drop_up),
+                                const Text(
+                                  "UP",
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            )),
+                      )
                     ],
                   ),
                 ),
