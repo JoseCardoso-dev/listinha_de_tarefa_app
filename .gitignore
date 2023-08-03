@@ -43,16 +43,17 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-./dart_tool/
-./idea/
-./android/
-./build/
-./ios/
-./linux/
-./macos/
-./test/
-./web/
-./metadata
+/dart_tool
+/idea
+/vscode
+/android
+/build
+/ios
+/linux
+/macos
+/test
+/web
+/metadata
 ./analysis_options.yaml
 ./listinha_de_tarefas.iml
 ./pubspec.lock
