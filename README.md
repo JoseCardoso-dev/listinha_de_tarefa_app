@@ -1,16 +1,13 @@
-# listinha_de_tarefas
+# Listinha de Tarefas 📝❤️
 
-A new Flutter project.
+### Olá! Bem vindo! ❤️
 
-## Getting Started
+Esse projetinho foi desenvolvido durante o início da minha trajetória na Formação: Desenvolva seu primeiro app com Flutter, na Alura. Muitos desafios e uma chuva de aprendizados, destacando: **Widgets, Stateless, Stateful, Imagens e Animações**.
 
-This project is a starting point for a Flutter application.
+Segue, a seguir, com visualizações do app que foi desenvolvido:
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+  <img src="assets/images/preview1_app.png" alt="Imagem 1">
+  <img src="assets/images/preview2_app.png" alt="Imagem 2">
+</p>
