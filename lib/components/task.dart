@@ -15,9 +15,21 @@ class Task extends StatefulWidget {
 
 class _TaskState extends State<Task> {
   int nivel = 0;
+  int cor = 0;
+  List cores = [
+    Colors.blue,
+    Colors.yellow,
+    Colors.orange,
+    Colors.green,
+    Colors.purple,
+    Colors.brown,
+    Colors.black
+  ];
 
   @override
   Widget build(BuildContext context) {
+    int dificuldade = widget.dificuldade;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Stack(
@@ -25,7 +37,7 @@ class _TaskState extends State<Task> {
           Container(
             height: 140,
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: cores[cor],
               borderRadius: BorderRadius.circular(5),
             ),
           ),
@@ -49,7 +61,7 @@ class _TaskState extends State<Task> {
                         height: 100,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5),
-                          child: Image.network(
+                          child: Image.asset(
                             widget.img,
                             fit: BoxFit.cover,
                           ),
@@ -59,7 +71,7 @@ class _TaskState extends State<Task> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: 140,
+                          width: 120,
                           child: Text(
                             widget.taskTitle,
                             style: const TextStyle(
@@ -72,7 +84,7 @@ class _TaskState extends State<Task> {
                           ),
                         ),
                         Difficulty(
-                          difficultyLevel: widget.dificuldade,
+                          difficultyLevel: dificuldade,
                         ),
                       ],
                     ),
@@ -80,11 +92,17 @@ class _TaskState extends State<Task> {
                       width: 60,
                       height: 50,
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
                         child: ElevatedButton(
                             onPressed: () {
                               setState(() {
                                 nivel++;
+                                if ((nivel / widget.dificuldade) / 10 == 1) {
+                                  if (cor < 6) {
+                                    nivel = 0;
+                                    cor++;
+                                  }
+                                }
                               });
                             },
                             child: Column(
@@ -95,7 +113,7 @@ class _TaskState extends State<Task> {
                                 Text(
                                   "UP",
                                   style: TextStyle(
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Colors.white,
                                   ),
                                 )
@@ -116,9 +134,8 @@ class _TaskState extends State<Task> {
                       //color: Colors.red,
                       width: 190,
                       child: LinearProgressIndicator(
-                        value: (widget.dificuldade > 0)
-                            ? (nivel / widget.dificuldade) / 10
-                            : 1,
+                        value:
+                            (dificuldade > 0) ? (nivel / dificuldade) / 10 : 1,
                         color: Colors.white,
                       ),
                     ),
